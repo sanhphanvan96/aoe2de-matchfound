@@ -1,5 +1,4 @@
 name: virustotal check
-
 on:
   release:
     types: [published]
