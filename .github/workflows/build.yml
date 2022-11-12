@@ -25,7 +25,7 @@ jobs:
           Copy-Item 14.wav -Destination build
           ls build
       - name: Upload
-        uses: actions/upload-artifact
+        uses: actions/upload-artifact@v3
         with:
           name: aoe2de-matchfound
           path: |
