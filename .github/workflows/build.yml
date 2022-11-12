@@ -6,6 +6,12 @@ on:
       - "!.github/workflows/**"
       - "*.md"
 
+  workflow_dispatch:
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/**"
+      - "*.md"
+
 jobs:
   build:
     runs-on: windows-latest
@@ -22,7 +28,9 @@ jobs:
         if: steps.cache-autoit.outputs.cache-hit != 'true'
         run: |
           Invoke-WebRequest -Uri https://www.autoitscript.com/cgi-bin/getfile.pl?autoit3/autoit-v3-setup.exe -OutFile autoit-v3-setup.exe
+          Invoke-WebRequest -Uri  https://www.autoitscript.com/autoit3/scite/download/Au3Stripper.zip -OutFile Au3Stripper.zip
           ./autoit-v3-setup.exe /S
+          Expand-Archive Au3Stripper.zip "C:\Program Files (x86)\AutoIt3\Aut2Exe\Au3Stripper"
 
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -30,7 +38,9 @@ jobs:
       - name: Compile
         run: |
           ls
-          C:\"Program Files (x86)"\AutoIt3\Aut2Exe\Aut2exe.exe /in aoe2de-matchfound.au3 /out build\aoe2de-matchfound.exe /nopack /icon icon.ico /comp 0 /x86
+          "C:\Program Files (x86)\AutoIt3\Aut2Exe\Au3Stripper" aoe2de-matchfound.au3
+          ls
+          C:\"Program Files (x86)"\AutoIt3\Aut2Exe\Aut2exe.exe /in aoe2de-matchfound_stripped.au3 /out build\aoe2de-matchfound.exe /nopack /icon icon.ico /comp 0 /x86
           Start-Sleep -s 10
           Copy-Item 14.wav -Destination build
           ls build
@@ -55,7 +65,7 @@ jobs:
           name: aoe2de-matchfound
           path: .
 
-      - name: test
+      - name: Check file exists
         run: ls -lah
 
       - name: VirusTotal Scan
