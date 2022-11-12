@@ -6,6 +6,14 @@ on:
       - "!.github/workflows/**"
       - "*.md"
 
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      envPAT:
+        required: true
 jobs:
   build:
     runs-on: windows-latest
