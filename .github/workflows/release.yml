@@ -32,8 +32,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            aoe2de-matchfound.exe
-            14.wav
+          files: aoe2de-matchfound.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
