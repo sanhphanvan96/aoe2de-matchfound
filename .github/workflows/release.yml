@@ -1,0 +1,29 @@
+name: release
+on:
+  workflow_dispatch:
+    paths-ignore:
+      - ".github/**"
+      - "!.github/workflows/**"
+      - "*.md"
+
+jobs:
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve executale file from artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: aoe2de-matchfound
+          path: .
+
+      - name: Check file exists
+        run: ls -lah
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: aoe2de-matchfound.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
