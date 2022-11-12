@@ -24,7 +24,7 @@ jobs:
           Start-Sleep -s 10
           Copy-Item 14.wav -Destination build
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact
         with:
           name: aoe2de-matchfound
           path: |
