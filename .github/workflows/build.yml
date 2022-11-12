@@ -15,7 +15,7 @@ jobs:
         id: cache-autoit
         uses: actions/cache@v3
         with:
-          path: \%ProgramFiles(x86)\%\AutoIt3\Aut2Exe\Aut2exe.exe
+          path: "C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe.exe"
           key: ${{ runner.os }}-autoit
 
       - name: Install Autoit
@@ -56,11 +56,11 @@ jobs:
           path: aoe2de-matchfound.exe
 
       - name: test
-        run: ls -lahR ..
+        run: ls -lahR .
 
       - name: VirusTotal Scan
         uses: crazy-max/ghaction-virustotal@v3
         with:
           vt_api_key: ${{ secrets.VT_API_KEY }}
           files: |
-            ./aoe2de-matchfound.exe
+            .aoe2de-matchfound/aoe2de-matchfound.exe
