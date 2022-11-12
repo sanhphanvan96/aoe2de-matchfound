@@ -20,7 +20,7 @@ jobs:
         run: |
           ls
           $ver= git rev-list --count HEAD
-          C:\"Program Files (x86)"\AutoIt3\Aut2Exe\Aut2exe.exe /in aoe2de-matchfound.au3 /out build\aoe2de-matchfound-1.0$ver.exe /nopack /icon icon.ico /comp 4 /x86
+          C:\"Program Files (x86)"\AutoIt3\Aut2Exe\Aut2exe.exe /in aoe2de-matchfound.au3 /out build\aoe2de-matchfound-1.0$ver.exe /nopack /icon icon.ico /comp 0 /x86
           Start-Sleep -s 5
           Copy-Item 14.wav -Destination build
           ls build
