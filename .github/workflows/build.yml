@@ -1,4 +1,4 @@
-name: build executable
+name: build
 on:
   push:
     paths-ignore:
@@ -10,12 +10,23 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+
+      - name: Cache Autoit
+        id: cache-autoit
+        uses: actions/cache@v3
+        with:
+          path: C:\"Program Files (x86)"\AutoIt3\Aut2Exe\Aut2exe.exe
+          key: ${{ runner.os }}-autoit
+
       - name: Install Autoit
+        if: steps.cache-autoit.outputs.cache-hit != 'true'
         run: |
           Invoke-WebRequest -Uri https://www.autoitscript.com/cgi-bin/getfile.pl?autoit3/autoit-v3-setup.exe -OutFile autoit-v3-setup.exe
           ./autoit-v3-setup.exe /S
+
       - name: Check out repository code
         uses: actions/checkout@v3
+
       - name: Compile
         run: |
           ls
@@ -23,6 +34,7 @@ jobs:
           Start-Sleep -s 10
           Copy-Item 14.wav -Destination build
           ls build
+
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
