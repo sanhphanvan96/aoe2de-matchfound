@@ -23,6 +23,7 @@ jobs:
           C:\"Program Files (x86)"\AutoIt3\Aut2Exe\Aut2exe.exe /in aoe2de-matchfound.au3 /out build\aoe2de-matchfound-1.0$ver.exe /nopack /icon icon.ico /comp 4 /x86
           Start-Sleep -s 10
           Copy-Item 14.wav -Destination build
+          ls build
       - name: Upload
         uses: actions/upload-artifact
         with:
