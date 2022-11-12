@@ -55,6 +55,9 @@ jobs:
           name: aoe2de-matchfound
           path: aoe2de-matchfound.exe
 
+      - name: test
+        run: ls -lahR ..
+
       - name: VirusTotal Scan
         uses: crazy-max/ghaction-virustotal@v3
         with:
