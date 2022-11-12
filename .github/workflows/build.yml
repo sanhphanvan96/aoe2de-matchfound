@@ -53,14 +53,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: aoe2de-matchfound
-          path: aoe2de-matchfound.exe
+          path: .
 
       - name: test
-        run: ls -lahR .
+        run: ls -lah
 
       - name: VirusTotal Scan
         uses: crazy-max/ghaction-virustotal@v3
         with:
           vt_api_key: ${{ secrets.VT_API_KEY }}
           files: |
-            .aoe2de-matchfound/aoe2de-matchfound.exe
+            aoe2de-matchfound.exe
