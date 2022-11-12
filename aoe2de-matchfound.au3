@@ -38,7 +38,7 @@ Global $HSHELL_FLASH = 32774;
 Global $bHook = 1
 ;GUI stuff:
 
-Global $iGuiW = 400, $iGuiH = 50, $sTitle = "AOE2 DE Match Found Alert", $aBtnText[2] = ["START", "STOP"]
+Global $iGuiW = 400, $iGuiH = 50, $sTitle = "AOE2 DE Match Found", $aBtnText[2] = ["START", "STOP"]
 $hGui = GUICreate($sTitle, $iGuiW, $iGuiH, -1, 0, $WS_POPUP+$WS_BORDER, $WS_EX_TOPMOST)
 GUISetOnEvent($GUI_EVENT_CLOSE, "SysEvents")
 GUISetOnEvent($GUI_EVENT_PRIMARYDOWN, "SysEvents")
