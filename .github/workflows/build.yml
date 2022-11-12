@@ -15,7 +15,7 @@ jobs:
         id: cache-autoit
         uses: actions/cache@v3
         with:
-          path: "C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe.exe"
+          path: C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe.exe
           key: ${{ runner.os }}-autoit
 
       - name: Install Autoit
