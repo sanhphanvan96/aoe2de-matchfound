@@ -12,6 +12,7 @@ jobs:
     secrets: inherit
 
   release:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Retrieve executale file from artifact
