@@ -22,6 +22,12 @@ jobs:
       - name: Check file exists
         run: ls -lah
 
+      - name: Zip package
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          sha256sum -b aoe2de-matchfound.exe > checksums.sha256
+          7z a aoe2de-matchfound.zip aoe2de-matchfound.exe 14.wav checksums.sha256
+
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
