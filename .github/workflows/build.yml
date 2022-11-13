@@ -53,3 +53,8 @@ jobs:
             build/
             !build/.gitkeep
           if-no-files-found: error
+
+  virustotal:
+    uses: ./.github/workflows/virustotal.yml
+    secrets: inherit
+    needs: build

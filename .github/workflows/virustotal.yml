@@ -1,10 +1,10 @@
 name: virustotal check
 on:
-  release:
-    types: [published]
+  workflow_call:
 
 jobs:
   virustotal:
+    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
       - name: Retrieve executale file from artifact
@@ -20,6 +20,5 @@ jobs:
         uses: crazy-max/ghaction-virustotal@v3
         with:
           vt_api_key: ${{ secrets.VT_API_KEY }}
-          update_release_body: true
           files: |
             aoe2de-matchfound.exe
