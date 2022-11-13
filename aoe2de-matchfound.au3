@@ -132,6 +132,5 @@ Func On_WM_SYSCOMMAND($hWnd, $Msg, $wParam, $lParam)
         Case $SC_CLOSE
             ShellHookWindow($hGui, 0)
             Return $GUI_RUNDEFMSG
-            ;Exit
     EndSwitch
 EndFunc
