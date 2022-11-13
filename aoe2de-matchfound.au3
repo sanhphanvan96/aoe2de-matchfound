@@ -31,8 +31,8 @@ Global $HSHELL_RUDEAPPACTIVATED = 32772;
 Global $HSHELL_FLASH = 32774;
 
 Global $bHook = 1
-;GUI stuff:
 
+;GUI stuff:
 Global $iGuiW = 400, $iGuiH = 50, $sTitle = "AOE2 DE Match Found", $aBtnText[2] = ["START", "STOP"]
 $hGui = GUICreate($sTitle, $iGuiW, $iGuiH, -1, 0, $WS_POPUP+$WS_BORDER, $WS_EX_TOPMOST)
 GUISetOnEvent($GUI_EVENT_CLOSE, "SysEvents")
@@ -50,8 +50,8 @@ GUICtrlSetTip(-1, "Start/Stop Listener")
 GUICtrlSetOnEvent(-1, "CtrlEvents")
 $cList = GUICtrlCreateList("", 0, 0, $iGuiW-$iGuiH-1, $iGuiH, $LBS_NOINTEGRALHEIGHT+$WS_VSCROLL)
 GUICtrlSetOnEvent(-1, "CtrlEvents")
-
 ;GUIDE
+
 MsgPrint("Press Ctrl + Click to drag GUI")
 ;Hook stuff:
 GUIRegisterMsg(RegisterWindowMessage("SHELLHOOK"), "HShellWndProc")
@@ -75,6 +75,7 @@ Func SysEvents()
             EndIf
     EndSwitch
 EndFunc
+
 Func CtrlEvents()
     Switch @GUI_CtrlId
         Case $cBtnMini
@@ -87,6 +88,7 @@ Func CtrlEvents()
             GUICtrlSetData($cBtnHook, $aBtnText[$bHook])
     EndSwitch
 EndFunc
+
 Func HShellWndProc($hWnd, $Msg, $wParam, $lParam)
     If $wParam = $HSHELL_FLASH Then
 	  $title = WinGetTitle($lParam)
@@ -98,6 +100,7 @@ Func HShellWndProc($hWnd, $Msg, $wParam, $lParam)
 	  EndIf
     EndIf
 EndFunc
+
 ;register/unregister ShellHook
 Func ShellHookWindow($hWnd, $bFlag)
     Local $sFunc = 'DeregisterShellHookWindow'
@@ -111,15 +114,18 @@ Func ShellHookWindow($hWnd, $bFlag)
     ;MsgPrint($sFunc & ' = ' & $aRet[0])
     Return $aRet[0]
 EndFunc
+
 Func MsgPrint($sText)
     ConsoleWrite($sText & @CRLF)
     GUICtrlSendMsg($cList, $LB_SETCURSEL, GUICtrlSendMsg($cList, $LB_ADDSTRING, 0, $sText), 0)
 EndFunc
+
 ;register window message
 Func RegisterWindowMessage($sText)
     Local $aRet = DllCall('user32.dll', 'int', 'RegisterWindowMessage', 'str', $sText)
     Return $aRet[0]
 EndFunc
+
 Func On_WM_SYSCOMMAND($hWnd, $Msg, $wParam, $lParam)
     Switch BitAND($wParam, 0xFFF0)
         Case $SC_MOVE, $SC_SIZE

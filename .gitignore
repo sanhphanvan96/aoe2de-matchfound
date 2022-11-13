@@ -1,2 +1,5 @@
 # Executables
 *.exe
+*.res
+*.zip
+rh_script.txt
