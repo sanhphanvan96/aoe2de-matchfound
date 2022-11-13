@@ -2,11 +2,6 @@
 #include <Misc.au3>
 #include <SendMessage.au3>
 
-
-
-; install the file to the script location.
-;FileInstall("14.wav", @ScriptDir & "\14.wav", $FC_NOOVERWRITE)
-
 ;#NoTrayIcon
 Opt("GUICloseOnESC", 0)
 Opt("GUIOnEventMode", 1)
@@ -99,7 +94,7 @@ Func HShellWndProc($hWnd, $Msg, $wParam, $lParam)
 	  MsgPrint("> Window flashing: " & " (" &$title & ")")
 	  If $title = "Age Of Empires II: Definitive Edition" Then
 		 SoundPlay(@ScriptDir & "\14.wav", 1)
-		 Sleep(5000)
+		 Sleep(2000)
 	  EndIf
     EndIf
 EndFunc
