@@ -1,5 +1,11 @@
 # aoe2de-matchfound
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+[![CI][build-badge]][build-url]
+
 Notify match found when losing focus the game window
+
+[build-badge]: https://github.com/sanhphanvan96/aoe2de-matchfound/actions/workflows/build.yml/badge.svg
+[build-url]: https://github.com/sanhphanvan96/aoe2de-matchfound/actions/workflows/build.yml
 
 ## How to use
 1. Download `aoe2de-matchfound.zip` from [the latest release](https://github.com/sanhphanvan96/aoe2de-matchfound/releases/latest)
