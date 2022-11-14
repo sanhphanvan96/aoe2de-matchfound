@@ -2,7 +2,7 @@
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
 [![CI][build-badge]][build-url]
 
-Notify `Age of Empires II: Definitive Edition` match found when losing focus the game window
+Notify `Age of Empires II: Definitive Edition` match found when losing focus the game window to do other things in the meantime
 
 [build-badge]: https://github.com/sanhphanvan96/aoe2de-matchfound/actions/workflows/build.yml/badge.svg
 [build-url]: https://github.com/sanhphanvan96/aoe2de-matchfound/actions/workflows/build.yml
