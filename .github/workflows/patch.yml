@@ -1,6 +1,6 @@
-name: patch
+name: virustotal check
 on:
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   patch:
@@ -9,8 +9,7 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
         with:
-          vs-version: "[16.4,16.5)"
-          msbuild-architecture: x64
+          msbuild-architecture: x86
 
       - name: Checkout xexe build tools
         uses: actions/checkout@v3
@@ -19,10 +18,10 @@ jobs:
           path: xexe
 
       - name: Check file exists
-        run: ls -Rlah
+        run: ls -lah
 
       - name: Build app for release
-        run: msbuild xexe.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+        run: msbuild xexe/xexe.sln -t:rebuild -verbosity:diag -property:Configuration=Release
 
       # - name: Retrieve executale file from artifact
       #   uses: actions/download-artifact@v3
@@ -32,6 +31,8 @@ jobs:
 
       # - name: Check file exists
       #   run: ls -lah
+
+
 
       # - name: VirusTotal Scan
       #   uses: crazy-max/ghaction-virustotal@v3
