@@ -1,6 +1,7 @@
-name: virustotal check
+name: patch
 on:
-  workflow_call:
+    workflow_dispatch:
+
 
 jobs:
   patch:
@@ -31,8 +32,6 @@ jobs:
 
       # - name: Check file exists
       #   run: ls -lah
-
-
 
       # - name: VirusTotal Scan
       #   uses: crazy-max/ghaction-virustotal@v3
