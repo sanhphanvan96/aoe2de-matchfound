@@ -19,10 +19,13 @@ jobs:
           path: xexe
 
       - name: Check file exists
-        run: ls
+        run: ls xexe
+
+      - name: Install windows-sdk-8.1
+        run: choco install windows-sdk-8.1
 
       - name: Build app for release
-        run: msbuild xexe/xexe.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+        run: msbuild xexe/xexe.sln -t:rebuild -verbosity:diag -property:Configuration=Release /p:PlatformToolset=v100
 
       # - name: Retrieve executale file from artifact
       #   uses: actions/download-artifact@v3
