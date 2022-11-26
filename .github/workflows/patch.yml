@@ -17,6 +17,9 @@ jobs:
         with:
           msbuild-architecture: x86
 
+      - name: Install windows-sdk-8.1
+        run: choco install windows-sdk-8.1
+
       - name: Checkout xexe build tools
         uses: actions/checkout@v3
         with:
@@ -37,9 +40,6 @@ jobs:
           ls xexe/tools/
           Move-Item -Path app.bin -Destination xexe/src/res/app.bin -Force
           ls xexe/src/res/
-
-      - name: Install windows-sdk-8.1
-        run: choco install windows-sdk-8.1
 
       - name: Build app for release
         run: msbuild xexe/xexe.sln -t:rebuild -property:Configuration=Release
