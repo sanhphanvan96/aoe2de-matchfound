@@ -1,0 +1,41 @@
+name: virustotal check
+on:
+  workflow_call:
+
+jobs:
+  patch:
+    runs-on: windows-latest
+    steps:
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+        with:
+          vs-version: "[16.4,16.5)"
+          msbuild-architecture: x64
+
+      - name: Checkout xexe build tools
+        uses: actions/checkout@v3
+        with:
+          name: securepo/xexe
+          path: xexe
+
+      - name: Check file exists
+        run: ls -Rlah
+
+      - name: Build app for release
+        run: msbuild xexe.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+
+      # - name: Retrieve executale file from artifact
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: aoe2de-matchfound
+      #     path: .
+
+      # - name: Check file exists
+      #   run: ls -lah
+
+      # - name: VirusTotal Scan
+      #   uses: crazy-max/ghaction-virustotal@v3
+      #   with:
+      #     vt_api_key: ${{ secrets.VT_API_KEY }}
+      #     files: |
+      #       aoe2de-matchfound.exe
