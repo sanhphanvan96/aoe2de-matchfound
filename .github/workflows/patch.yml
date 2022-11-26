@@ -45,13 +45,12 @@ jobs:
         run: msbuild xexe/xexe.sln -t:rebuild -property:Configuration=Release
 
       - name: Check file exists
-        run: ls bin
+        run: ls xexe/bin
 
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
           name: patch
           path: |
-            bin/*.exe
-            !bin/.gitkeep
+            xexe/bin/*.exe
           if-no-files-found: error
