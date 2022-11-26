@@ -15,11 +15,11 @@ jobs:
       - name: Checkout xexe build tools
         uses: actions/checkout@v3
         with:
-          name: securepo/xexe
+          repository: securepo/xexe
           path: xexe
 
       - name: Check file exists
-        run: ls -lah
+        run: ls
 
       - name: Build app for release
         run: msbuild xexe/xexe.sln -t:rebuild -verbosity:diag -property:Configuration=Release
