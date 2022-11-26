@@ -1,4 +1,4 @@
-name: virustotal check
+name: patch
 on:
   workflow_call:
 
