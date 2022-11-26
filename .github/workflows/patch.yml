@@ -7,8 +7,9 @@ jobs:
   build:
       uses: ./.github/workflows/build.yml
       secrets: inherit
-      
+
   patch:
+    needs: build
     runs-on: windows-latest
     steps:
       - name: Add msbuild to PATH
