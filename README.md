@@ -13,4 +13,4 @@ Notify `Age of Empires II: Definitive Edition` match found when losing focus the
 3. Open game AOE2 DE and `Find Match`
 4. Double click `aoe2de-matchfound.exe` to run in the background. The tool will play the famous taunt `Start the game already` when match found
 
-```Note: Some antivirus might warn the exe file as virus but it's a false possitive. The tool is open source, and released directly from Github Actions with transparency. You might check it out.```
+```Note: Some antivirus might warn the exe file as virus but it's a false positive. The tool is open source, and released directly from Github Actions with transparency. You might wanna check it out.```
